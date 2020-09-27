@@ -1,60 +1,50 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
-    <v-main>
-      <HelloWorld/>
+    <v-main class="background">
+      <router-view></router-view>
+      <p>{{ info }}</p>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
 
 export default {
   name: 'App',
 
-  components: {
-    HelloWorld,
-  },
-
   data: () => ({
-    //
+    info: ''
   }),
-};
+
+  created() {
+    this.$store.commit('getInfoFromServer');
+  }
+}
 </script>
+
+<style scoped>
+.background {
+  background: linear-gradient(34deg, #19e41b, #2cc42e, #305131);
+  background-size: 600% 600%;
+
+  -webkit-animation: AnimationName 16s ease infinite;
+  -moz-animation: AnimationName 16s ease infinite;
+  animation: AnimationName 16s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+  0%{background-position:0% 73%}
+  50%{background-position:100% 28%}
+  100%{background-position:0% 73%}
+}
+@-moz-keyframes AnimationName {
+  0%{background-position:0% 73%}
+  50%{background-position:100% 28%}
+  100%{background-position:0% 73%}
+}
+@keyframes AnimationName {
+  0%{background-position:0% 73%}
+  50%{background-position:100% 28%}
+  100%{background-position:0% 73%}
+}
+</style>
