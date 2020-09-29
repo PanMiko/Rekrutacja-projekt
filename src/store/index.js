@@ -9,7 +9,8 @@ export default new Vuex.Store({
             status: '',
             title: '',
             sessions: [],
-            arrangement: {}
+            arrangement: {},
+            choosenSeats: []
         };
     },
     mutations: {
@@ -28,21 +29,37 @@ export default new Vuex.Store({
                     state.sessions = data.sessions;
                     state.arrangement = data.arrangement;
 
+
                     for (let i = 0; i < state.sessions.length; i++) {
                         let unix_timestamp = state.sessions[i];
-                        var date = new Date(unix_timestamp * 1000);
-                        var hours = date.getHours();
-                        var minutes = "0" + date.getMinutes();
+                        let date = new Date(unix_timestamp * 1000);
+                        let hours = date.getHours();
+                        let minutes = "0" + date.getMinutes();
 
-                        var formattedTime = hours + ':' + minutes.substr(-2);
+                        let formattedTime = hours + ':' + minutes.substr(-2);
 
-                        console.log(formattedTime);
                         state.sessions[i] = formattedTime;
                     }
                 });
         },
+        pushing(state, payload) {
+            state.choosenSeats.push(payload);
+        },
+        removing(state, payload) {
+            state.choosenSeats.splice(payload, 1);
+        }
     },
-    actions: {},
+    actions: {
+        connect(context) {
+            context.commit('getInfoFromServer');
+        },
+        pushSeat(context, payload) {
+            context.commit('pushing', payload);
+        },
+        removeSeat(context, payload) {
+            context.commit('removing', payload);
+        }
+    },
     getters: {
         getStatus(state) {
             return state.status;

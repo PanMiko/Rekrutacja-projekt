@@ -14,16 +14,16 @@
 
         <v-card-actions row wrap justify-center class="mt-3 d-none d-sm-flex">
           <v-flex xs6 md3>
-            <v-btn rounded to="/about">12:30</v-btn>
+            <v-btn rounded to="/hall">12:30</v-btn>
           </v-flex>
           <v-flex xs6 md3>
-            <v-btn rounded to="/about">14:30</v-btn>
+            <v-btn rounded to="/hall">14:30</v-btn>
           </v-flex>
           <v-flex xs6 md3>
-            <v-btn rounded to="/about">16:30</v-btn>
+            <v-btn rounded to="/hall">16:30</v-btn>
           </v-flex>
           <v-flex xs6 md3>
-            <v-btn rounded to="/about">17:30</v-btn>
+            <v-btn rounded to="/hall">17:30</v-btn>
           </v-flex>
         </v-card-actions>
 
@@ -36,19 +36,20 @@
 
     <v-card-actions row wrap justify-center class="ma-3 d-flex d-sm-none">
       <v-flex xs6 md3>
-        <v-btn rounded to="/about">12:30</v-btn>
+        <v-btn rounded to="/hall">12:30</v-btn>
       </v-flex>
       <v-flex xs6 md3>
-        <v-btn rounded to="/about">14:30</v-btn>
+        <v-btn rounded to="/hall">14:30</v-btn>
       </v-flex>
       <v-flex xs6 md3>
-        <v-btn rounded to="/about">16:30</v-btn>
+        <v-btn rounded to="/hall">16:30</v-btn>
       </v-flex>
       <v-flex xs6 md3>
-        <v-btn rounded to="/about">17:30</v-btn>
+        <v-btn rounded to="/hall">17:30</v-btn>
       </v-flex>
     </v-card-actions>
     <!---------------------->
+    <p>{{ sessions }}</p>
   </v-card>
 </template>
 
@@ -57,12 +58,14 @@ export default {
   name: "FilmCard.vue",
   data() {
     return {
-      sessions: []
+      // sessions: []
     };
   },
-  created() {
-    this.sessions = this.$store.getters.getSessions;
-  }
+  computed: {
+    sessions() {
+      return this.$store.getters.getSessions;
+    }
+  },
 }
 </script>
 
