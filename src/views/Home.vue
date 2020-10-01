@@ -6,11 +6,10 @@
 </template>
 
 <script>
-import FilmCard from "@/components/FilmCard";
-import Header from "@/components/HeaderHome";
+import FilmCard from "@/components/Home/FilmCard";
+import Header from "@/components/Home/HeaderHome";
 
 export default {
-  name: 'Home',
   components: {
     Header,
     FilmCard

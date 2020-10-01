@@ -3,6 +3,8 @@
     <HeaderContacts></HeaderContacts>
     <v-card class="mx-auto" max-width="1000px">
       <form class="ma-5 pa-8">
+
+<!--IMIE-->
         <v-text-field
             color="#802BB1"
             v-model="name"
@@ -13,7 +15,9 @@
             @input="$v.name.$touch()"
             @blur="$v.name.$touch()"
         ></v-text-field>
+<!-------->
 
+<!--NAZWISKO-->
         <v-text-field
             color="#802BB1"
             v-model="surname"
@@ -24,7 +28,9 @@
             @input="$v.surname.$touch()"
             @blur="$v.surname.$touch()"
         ></v-text-field>
+<!------------>
 
+<!--EMAIL-->
         <v-text-field
             color="#802BB1"
             v-model="email"
@@ -34,23 +40,25 @@
             @input="$v.email.$touch()"
             @blur="$v.email.$touch()"
         ></v-text-field>
+<!--------->
 
+<!--TELEFON-->
         <v-text-field
             color="#802BB1"
             v-model="phone"
             :error-messages="phoneErrors"
             :counter="9"
-            label="Numer telefonu"
+            label="Numer Telefonu"
             required
             @input="$v.phone.$touch()"
             @blur="$v.phone.$touch()"
         ></v-text-field>
+<!----------->
 
         <v-btn
             dark
             class="mt-5"
             color="#564F6F"
-            :loading="isLoading"
             @click="submit"
             to="/summary"
         >
@@ -64,7 +72,7 @@
 <script>
 import {validationMixin} from 'vuelidate'
 import {required, maxLength, minLength, email, numeric} from 'vuelidate/lib/validators'
-import HeaderContacts from "@/components/HeaderContacts";
+import HeaderContacts from "@/components/Contact/HeaderContacts";
 
 export default {
   mixins: [validationMixin],
@@ -76,13 +84,21 @@ export default {
     phone: {required, maxLength: maxLength(9), minLength: minLength(9), numeric},
   },
 
-  data: () => ({
-    name: '',
-    surname: '',
-    email: '',
-    phone: '',
-    isLoading: false
-  }),
+  data() {
+    return {
+      name: '',
+      surname: '',
+      email: '',
+      phone: '',
+    };
+  },
+
+  mounted() {
+    this.name = this.$store.state.userInfo.name;
+    this.surname = this.$store.state.userInfo.surname;
+    this.email = this.$store.state.userInfo.email;
+    this.phone = this.$store.state.userInfo.phone;
+  },
 
   components: {
     HeaderContacts,
@@ -96,6 +112,7 @@ export default {
       !this.$v.name.required && errors.push('Imię jest wymagane');
       return errors;
     },
+
     surnameErrors() {
       const errors = [];
       if (!this.$v.surname.$dirty) return errors;
@@ -103,6 +120,7 @@ export default {
       !this.$v.surname.required && errors.push('Nazwisko jest wymagane');
       return errors;
     },
+
     emailErrors() {
       const errors = [];
       if (!this.$v.email.$dirty) return errors;
@@ -110,6 +128,7 @@ export default {
       !this.$v.email.required && errors.push('E-mail jest wymagany');
       return errors;
     },
+
     phoneErrors() {
       const errors = [];
       if (!this.$v.phone.$dirty) return errors;
@@ -129,7 +148,15 @@ export default {
   },
 
   beforeRouteLeave(to, from, next) {
-    if (!this.submit()) next();
+    if (!this.submit()) {
+      next();
+      this.$store.dispatch('pushUserInfo', {
+        name: this.name,
+        surname: this.surname,
+        email: this.email,
+        phone: this.phone
+      });
+    }
   }
 };
 </script>

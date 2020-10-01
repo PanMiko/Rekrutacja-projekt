@@ -1,10 +1,19 @@
 <template>
-  <h1>Summary</h1>
+  <div>
+    <HeaderSummary></HeaderSummary>
+    <SummaryContent></SummaryContent>
+  </div>
 </template>
 
 <script>
+import HeaderSummary from "@/components/Summary/HeaderSummary";
+import SummaryContent from "@/components/Summary/SummaryContent";
+
 export default {
-name: "Summary.vue"
+  components: {
+    HeaderSummary,
+    SummaryContent
+  }
 }
 </script>
 

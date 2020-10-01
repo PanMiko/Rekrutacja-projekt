@@ -1,23 +1,29 @@
 <template>
-  <div class="hall">
-    <ArragmentGrid></ArragmentGrid>
+  <div>
+    <HeaderHall></HeaderHall>
+    <ArragmentGrid class="mt-10"></ArragmentGrid>
     <v-divider class="ma-5"></v-divider>
     <DiscountsForm></DiscountsForm>
-    <br>
-    <v-btn dark tile fixed right color="#564F6F" to="/contact">
-      <v-icon>arrow_right_alt</v-icon>
-    </v-btn>
+    <Dialog></Dialog>
   </div>
 </template>
 
 <script>
-import ArragmentGrid from "@/components/ArragmentGrid";
-import DiscountsForm from "@/components/DiscountsForm";
+import HeaderHall from "@/components/Hall/HeaderHall";
+import ArragmentGrid from "@/components/Hall/ArragmentGrid";
+import DiscountsForm from "@/components/Hall/ChoosenSeatsForm";
+import Dialog from "@/components/Hall/Dialog";
 
 export default {
   components: {
+    HeaderHall,
     ArragmentGrid,
-    DiscountsForm
+    DiscountsForm,
+    Dialog
+  },
+
+  beforeRouteLeave(to, from, next) {
+    if(this.$store.state.choosenSeats.length !== 0) next();
   }
 }
 </script>

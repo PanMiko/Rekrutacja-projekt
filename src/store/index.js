@@ -39,17 +39,15 @@ export default new Vuex.Store({
                         let hours = date.getHours();
                         let minutes = "0" + date.getMinutes();
 
-                        let formattedTime = hours + ':' + minutes.substr(-2);
-
-                        state.sessions[i] = formattedTime;
+                        state.sessions[i] = hours + ':' + minutes.substr(-2);
                     }
                 });
         },
         //
-        pushing(state, payload) {
+        addSeat(state, payload) {
             state.choosenSeats.push(payload);
         },
-        removing(state, payload) {
+        removeSeat(state, payload) {
             state.choosenSeats.splice(payload, 1);
         },
         //
@@ -59,15 +57,15 @@ export default new Vuex.Store({
         }
     },
     actions: {
-        connect(context) {
+        getInfoFromServer(context) {
             context.commit('getInfoFromServer');
         },
         //
-        pushSeat(context, payload) {
-            context.commit('pushing', payload);
+        addSeat(context, payload) {
+            context.commit('addSeat', payload);
         },
         removeSeat(context, payload) {
-            context.commit('removing', payload);
+            context.commit('removeSeat', payload);
         },
         //
         pushUserInfo(context, payload) {
