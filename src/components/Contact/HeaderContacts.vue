@@ -26,6 +26,6 @@ export default {
 <style scoped>
 .my-header-background {
   background-color: #2D283E;
-  padding: 80px;
+  padding: 50px;
 }
 </style>

@@ -7,8 +7,6 @@
         <v-card-title>{{ $store.getters.getTitle }}</v-card-title>
         <v-card-text>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam cumque, dicta dignissimos dolorem
           ea earum enim et eum ex laudantium maiores non rerum sunt! Beatae dolore eveniet ex quam quas.
-          <br><br>
-          <strong>CENA: 25zł</strong>
         </v-card-text>
 
 <!--FOR MD+ SCREENS-->
@@ -37,7 +35,8 @@
 </template>
 
 <script>
-export default {}
+export default {
+}
 </script>
 
 <style scoped>

@@ -148,6 +148,7 @@ export default {
   },
 
   beforeRouteLeave(to, from, next) {
+    if(to.path !== '/summary') next();
     if (!this.submit()) {
       next();
       this.$store.dispatch('pushUserInfo', {

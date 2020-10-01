@@ -10,10 +10,12 @@ export default new Vuex.Store({
             title: '',
             sessions: [],
             arrangement: {},
+            choosenSession: '',
             //
             choosenSeats: [],
             //
-            userInfo: {}
+            userInfo: {},
+            
         };
     },
     mutations: {
@@ -43,6 +45,10 @@ export default new Vuex.Store({
                     }
                 });
         },
+        userSession(state, payload) {
+            state.choosenSession = payload;
+            console.log(payload);
+        },
         //
         addSeat(state, payload) {
             state.choosenSeats.push(payload);
@@ -53,12 +59,14 @@ export default new Vuex.Store({
         //
         pushUserInfo(state, payload) {
             state.userInfo = payload;
-            console.log(payload);
         }
     },
     actions: {
         getInfoFromServer(context) {
             context.commit('getInfoFromServer');
+        },
+        userSession(context, payload) {
+            context.commit('userSession', payload);
         },
         //
         addSeat(context, payload) {

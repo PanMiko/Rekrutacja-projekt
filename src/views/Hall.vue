@@ -22,8 +22,9 @@ export default {
     Dialog
   },
 
-  beforeRouteLeave(to, from, next) {
-    if(this.$store.state.choosenSeats.length !== 0) next();
+  beforeRouteLeave: function (to, from, next) {
+    if (to.path !== '/contact') next();
+    if (this.$store.state.choosenSeats.length !== 0) next();
   }
 }
 </script>
