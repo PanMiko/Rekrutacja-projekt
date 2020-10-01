@@ -7,7 +7,7 @@
 
 <script>
 import FilmCard from "@/components/FilmCard";
-import Header from "@/components/Header";
+import Header from "@/components/HeaderHome";
 
 export default {
   name: 'Home',

@@ -10,7 +10,10 @@ export default new Vuex.Store({
             title: '',
             sessions: [],
             arrangement: {},
-            choosenSeats: []
+            //
+            choosenSeats: [],
+            //
+            userInfo: {}
         };
     },
     mutations: {
@@ -42,22 +45,33 @@ export default new Vuex.Store({
                     }
                 });
         },
+        //
         pushing(state, payload) {
             state.choosenSeats.push(payload);
         },
         removing(state, payload) {
             state.choosenSeats.splice(payload, 1);
+        },
+        //
+        pushUserInfo(state, payload) {
+            state.userInfo = payload;
+            console.log(payload);
         }
     },
     actions: {
         connect(context) {
             context.commit('getInfoFromServer');
         },
+        //
         pushSeat(context, payload) {
             context.commit('pushing', payload);
         },
         removeSeat(context, payload) {
             context.commit('removing', payload);
+        },
+        //
+        pushUserInfo(context, payload) {
+            context.commit('pushUserInfo', payload);
         }
     },
     getters: {

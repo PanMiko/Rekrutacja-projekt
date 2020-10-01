@@ -2,16 +2,17 @@
   <v-card>
     <v-list>
 
-      <v-list-item v-for="(seat, i) in seats.slice().reverse()" :key="i">
+      <v-list-item v-for="(seat, i) in seats" :key="i">
         <v-list-item-content>
           <v-list-item-title>Rząd: {{ seat.row }} | Miejsce: {{ seat.seat }}</v-list-item-title>
         </v-list-item-content>
 
-        <v-subheader class="subheading mr-8">Zniżki:</v-subheader>
+        <v-subheader class="subheading mr-8">Zniżka:</v-subheader>
 
         <v-select
+            v-model="select"
             :items="options"
-            label="Outlined style"
+            item-text="name"
             outlined
         ></v-select>
 
@@ -26,8 +27,8 @@ export default {
   data() {
     return {
       seats: [],
-      selected: 'DUPA',
-      options: ['Normalny', 'Studencki', 'Uczniowski', 'Senior']
+      select: 'Normalny',
+      options: ['Normalny', 'Studencki (-50%)', 'Uczniowski (-30%)', 'Senior (-70%)']
     };
   },
   mounted() {
