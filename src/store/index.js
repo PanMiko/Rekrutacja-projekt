@@ -45,10 +45,6 @@ export default new Vuex.Store({
                     }
                 });
         },
-        userSession(state, payload) {
-            state.choosenSession = payload;
-            console.log(payload);
-        },
         //
         addSeat(state, payload) {
             state.choosenSeats.push(payload);
@@ -64,9 +60,6 @@ export default new Vuex.Store({
     actions: {
         getInfoFromServer(context) {
             context.commit('getInfoFromServer');
-        },
-        userSession(context, payload) {
-            context.commit('userSession', payload);
         },
         //
         addSeat(context, payload) {
