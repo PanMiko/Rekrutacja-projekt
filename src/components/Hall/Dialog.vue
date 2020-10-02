@@ -7,19 +7,18 @@
     >
 
       <template v-slot:activator="{ on, attrs }">
-        <v-btn small
-               :large="$vuetify.breakpoint.mdAndUp"
-               dark
-               tile
-               fixed
-               bottom
-               right
-               color="#564F6F"
-               to="/contact"
-               v-bind="attrs"
-               v-on="on">
-          <v-icon>arrow_right_alt</v-icon>
-        </v-btn>
+        <v-col>
+          <v-btn x-large
+                 dark
+                 tile
+                 color="#564F6F"
+                 class="ma-10 float-right"
+                 to="/contact"
+                 v-bind="attrs"
+                 v-on="on">
+            <v-icon x-large>arrow_right_alt</v-icon>
+          </v-btn>
+        </v-col>
       </template>
 
       <v-card>

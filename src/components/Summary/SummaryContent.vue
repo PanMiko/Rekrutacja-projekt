@@ -5,8 +5,6 @@
     <div class="mt-10 my-style">
       <span class="display-2 ml-5">Wybrane miejsca</span>
 
-      <DiscountsForm class="mt-5"></DiscountsForm>
-
       <v-btn text
              class="mt-5 float-right"
              color="#564F6F"
@@ -14,6 +12,9 @@
         <v-icon>edit</v-icon>
         EDYTUJ
       </v-btn>
+
+      <DiscountsForm class="mt-5"></DiscountsForm>
+
     </div>
 <!-------------------------->
 
@@ -23,7 +24,15 @@
     <div class="my-style mt-15">
       <span class="display-2 ml-5">Dane kontaktowe</span>
 
-      <v-card class="mt-10 mx-auto" max-width="1000px">
+      <v-btn text
+             class="my-5 float-right"
+             color="#564F6F"
+             to="/contact">
+        <v-icon>edit</v-icon>
+        EDYTUJ
+      </v-btn>
+
+      <v-card class="mt-10 mx-auto mb-10" max-width="1000px">
         <div v-for="(value, name, index) in $store.state.userInfo" :key="name">
           <v-list-item two-line>
 
@@ -38,13 +47,6 @@
       </v-card>
 <!------------------------------------>
 
-      <v-btn text
-             class="my-5 float-right"
-             color="#564F6F"
-             to="/contact">
-        <v-icon>edit</v-icon>
-        EDYTUJ
-      </v-btn>
     </div>
 
   </div>
