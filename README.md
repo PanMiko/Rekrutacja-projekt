@@ -1,14 +1,22 @@
-# rekrutacja-projekt
+# Vue Cinema Recruitment project
 
-### Recruitment project for a frontend developer in KN SOLVRO.
-### Used:
-```
--> Vue 2 (because when I started Vuetify wasn't working on Vue 3)
--> Vuetify
--> Vuex
--> Routing
--> Vuelidate
-```
+### Frontend recruitment project for KN Solvro on PWR. Created with Vue 2.
+
+A simple app created wih Vue that allows you to select places in the cinema and fill out a purchase form.
+
+> Thanks to this project, I was able to get into the science club! 😄
+
+#Tech stack
+
+### Frontend:
+- Vue 2 (because when I started, Vuetify wasn't working on Vue 3)
+- Vuetify
+- Vuex
+- Routing
+- Vuelidate
+
+### Backend:
+- Provided by Solvro as API
 
 ## Project setup
 ```
